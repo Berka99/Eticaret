@@ -1,0 +1,12 @@
+{
+  "name": "e-commerce",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon backend/server.js",
+    "vercel-build": "cd frontend && npm install && npm run build"
+  },
+  "dependencies": {
+    "react-switch": "^7.0.0"
+  }
+}

@@ -1,0 +1,20 @@
+# Tüm .env dosyalarını engelle (Ana klasör, backend ve frontend dahil)
+.env
+*.env
+backend/.env
+frontend/.env
+
+# Tüm node_modules klasörlerini engelle
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+# Build ve log çıktıları
+dist/
+build/
+.next/
+*.log
+
+# Editör dosyaları
+.vscode/
+.DS_Store
