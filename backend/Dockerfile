@@ -15,4 +15,6 @@ COPY . .
 EXPOSE 5000
 
 # Uygulamayı başlat
-CMD ["node", "index.js"]
+CMD ["node", "server.js"]
+
+RUN apk update && apk upgrade
