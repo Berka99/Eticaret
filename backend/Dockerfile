@@ -1,5 +1,5 @@
 # Node.js alpine (hafif) imajını kullan
-FROM node:20-alpine
+FROM node:22-alpine
 
 # Çalışma dizinini ayarla
 WORKDIR /app
