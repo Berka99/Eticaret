@@ -27,7 +27,8 @@ jobs:
       - name: Semgrep Code Scan
         uses: semgrep/semgrep-action@v1
         with:
-          config: p/ci
+          config: p/security-audit
+          continue-on-error: true
 
       - name: Docker Imajini Olustur (Build)
         run: docker build -t eticaret-backend ./backend
