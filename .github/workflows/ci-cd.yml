@@ -6,34 +6,36 @@ on:
   pull_request:
     branches: [ "main", "master" ]
 
-
 jobs:
   build-and-scan:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Kodlari Depodan Cek (Checkout)
-      uses: actions/checkout@v4
+      - name: Kodlari Depodan Cek (Checkout)
+        uses: actions/checkout@v4
 
-    - name: Node.js Ortamini Kur
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
+      - name: Node.js Ortamini Kur
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
 
-    - name: Backend Bagimliliklarini Yukle
-      run:  |
-        cd backend
-        npm install
+      - name: Backend Bagimliliklarini Yukle
+        run: |
+          cd backend
+          npm install
 
-    - name: Docker Imajini Olustur (Build)
-      run:  |
-        docker build -t eticaret-backend ./backend
+      - name: Semgrep Code Scan
+        uses: semgrep/semgrep-action@v1
+        with:
+          config: auto
 
+      - name: Docker Imajini Olustur (Build)
+        run: docker build -t eticaret-backend ./backend
 
-    - name: Trivy ile Guvenlik Taramasi Yap
-      uses: aquasecurity/trivy-action@master
-      with: 
-        image-ref: 'eticaret-backend'
-        format: 'table'
-        exit-code: '0' 
-        severity: 'HIGH,CRITICAL' 
+      - name: Trivy ile Guvenlik Taramasi Yap
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'eticaret-backend'
+          format: 'table'
+          exit-code: '0'
+          severity: 'HIGH,CRITICAL'
