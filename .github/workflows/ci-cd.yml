@@ -17,7 +17,7 @@ jobs:
       - name: Node.js Ortamini Kur
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
 
       - name: Backend Bagimliliklarini Yukle
         run: |
@@ -27,7 +27,7 @@ jobs:
       - name: Semgrep Code Scan
         uses: semgrep/semgrep-action@v1
         with:
-          config: auto
+          config: p/ci
 
       - name: Docker Imajini Olustur (Build)
         run: docker build -t eticaret-backend ./backend
