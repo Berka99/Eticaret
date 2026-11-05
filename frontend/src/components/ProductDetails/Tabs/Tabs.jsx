@@ -50,7 +50,7 @@ const Tabs = ({ singleProduct }) => {
         >
           <p
             className="product-description"
-            dangerouslySetInnerHTML={{ __html: singleProduct.description }}
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(singleProduct.description) }}
           ></p>
         </div>
         <div

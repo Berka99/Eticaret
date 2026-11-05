@@ -44,7 +44,7 @@ const Info = ({ singleProduct }) => {
       </div>
       <p
         className="product-description"
-        dangerouslySetInnerHTML={{ __html: singleProduct.description }}
+        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitizeo(singleProduct.description) }}
       ></p>
       <form className="variations-form">
         <div className="variations">
